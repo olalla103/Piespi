@@ -6,17 +6,17 @@ import java.io.InputStream;
 
 public class Ej3 {
     public static void main(String[] args) throws IOException {
-        File directorio = new File("./bin");
-        ProcessBuilder pb = new ProcessBuilder("java", "Ejemplo 2");
+        File directorio = new File("/home/usuario/PSP/out/production/PSP");
+        ProcessBuilder pb = new ProcessBuilder("/home/usuario/.jdks/openjdk-23/bin/java", "EjemplosLibro.Ej2", "Me llamo Olalla");
         pb.directory(directorio);
-        System.out.println("Directorio de trabajo: %s%n" + pb.directory());
+        System.out.println("Directorio de trabajo: \n" + pb.directory());
         Process p = pb.start();
 
         try {
             InputStream is = p.getInputStream();
             int c;
             while ((c = is.read()) != -1) {
-                System.out.println((char) c);
+                System.out.print((char) c);
             }
             is.close();
         } catch (Exception e) {
