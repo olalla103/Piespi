@@ -1,32 +1,46 @@
 package EjemplosLibro.act1_6;
 
-import java.io.IOException;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.*;
 
 public class CompruebaNumero {
-    public static void main(String[] args) {
-        try {
-            // Crear el proceso para ejecutar el primer programa (SumarDosNumeros)
-            ProcessBuilder pb = new ProcessBuilder("java", "SumarDosNumeros");
+    public static void main(String[] args) throws IOException {
+        // Directorio donde está la clase LeerNombre
+        File directorio = new File("/home/usuario/PSP/out/production/PSP");
 
-            // Iniciar el proceso
-            Process proceso = pb.start();
+        // Usamos ProcessBuilder para ejecutar el comando java con la clase LeerNombre y sus argumentos
+        ProcessBuilder pb = new ProcessBuilder("/home/usuario/.jdks/openjdk-23/bin/java", "/home/usuario/PSP/src/EjemplosLibro/act1_6/Act6.java");
+        pb.directory(directorio);
 
-            // Leer la salida del programa ejecutado
-            BufferedReader reader = new BufferedReader(new InputStreamReader(proceso.getInputStream()));
-            String linea;
-            while ((linea = reader.readLine()) != null) {
-                System.out.println(linea);
+        System.out.println("Directorio de trabajo: " + pb.directory());
+        Process p = pb.start();
+
+        OutputStream os = p.getOutputStream();
+        os.write("10\n".getBytes());
+        os.write("2\n".getBytes());
+        os.flush();
+
+        // Leemos la salida del proceso
+        try (InputStream is = p.getInputStream()) {
+            int c;
+            while ((c = is.read()) != -1) {
+                System.out.print((char) c);
             }
-
-            // Esperar a que el proceso termine
-            int exitCode = proceso.waitFor();
-            System.out.println("El programa terminó con el código de salida: " + exitCode);
-        } catch (IOException | InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
+
+        int exitVal;
+
+        try {
+            exitVal = p.waitFor();
+            System.out.println("Valor de salida: " + exitVal);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
+
+
 }
 

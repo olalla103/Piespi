@@ -5,7 +5,7 @@ import java.io.*;
 public class act1_5 {
     public static void main(String[] args) throws IOException {
         File directorio = new File("/home/usuario/PSP/out/production/PSP");
-        ProcessBuilder pb = new ProcessBuilder("/home/usuario/.jdks/openjdk-23/bin/java", "EjemplosLibro.Ej6", "DIRR");
+        ProcessBuilder pb = new ProcessBuilder("/home/usuario/.jdks/openjdk-23/bin/java", "EjemplosLibro.Act6", "DIRR");
         pb.directory(directorio);
         System.out.println("Directorio de trabajo:  \n" + pb.directory());
         Process p = pb.start();
