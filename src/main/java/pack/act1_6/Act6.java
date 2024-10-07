@@ -1,4 +1,4 @@
-package EjemplosLibro.act1_6;
+package pack.act1_6;
 
 import java.io.BufferedReader;
 import java.io.IOException;

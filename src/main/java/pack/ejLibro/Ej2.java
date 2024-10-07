@@ -1,4 +1,4 @@
-package EjemplosLibro;
+package pack.ejLibro;
 
 import java.io.IOException;
 import java.io.InputStream;
