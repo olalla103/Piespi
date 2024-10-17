@@ -3,7 +3,7 @@ package main.hilosActividades.Act2_2;
 import java.applet.Applet;
 import java.awt.*;
 
-public class TransformaAct1 implements Runnable {
+public class TransformaAct1 extends Thread {
     String palabra;
 
     public TransformaAct1(String palabra) throws HeadlessException {
@@ -13,10 +13,11 @@ public class TransformaAct1 implements Runnable {
     @Override
     public void run() {
         try {
+            int id = (int) Thread.currentThread().getId();
             // Espera un tiempo basado en el ID del hilo actual
-            Thread.sleep(Thread.currentThread().getId() * 100);
+            Thread.sleep(id * 100);
             // Imprime el ID del hilo actual
-            System.out.println("Hola Mundo " + this.getPalabra() + " " + Thread.currentThread().getId());
+            System.out.println("Hola Mundo " + this.getPalabra() + " " + id);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

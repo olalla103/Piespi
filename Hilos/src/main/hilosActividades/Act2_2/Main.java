@@ -8,11 +8,13 @@ public class Main {
         TransformaAct1 h4 = new TransformaAct1("Ratón");
         TransformaAct1 h5 = new TransformaAct1("Botón");
 
-        h1.run();
-        h2.run();
-        h3.run();
-        h4.run();
-        h5.run();
+        // Tengo que usar el método start aunque esté implementando la interfaz runnable
+        // porque así es como inicio un hilo
+        h1.start();
+        h2.start();
+        h3.start();
+        h4.start();
+        h5.start();
 
 
     }

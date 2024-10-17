@@ -17,7 +17,4 @@ public class Actividad1 extends Thread {
         return mensaje;
     }
 
-    public void setMensaje(String mensaje) {
-        this.mensaje = mensaje;
-    }
 }
